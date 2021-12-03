@@ -5,27 +5,28 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('รายการ') }}
-                    <a href="/createData"> <button class="btn btn-success float-right">สร้างรายการ</button></a>
+                <div classs="row">
+                    <div class="card-header" style="height: 70px">
+                        <h2 class="float-left">Employee</h2>
+                        <a href="/createData"> <button class="btn btn-success float-right">New Employee</button></a>
+                    </div>
                 </div>
-
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     <div class="table-responsive">
                         <table class="table table-bordered " style="table-layout: fixed;">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">ชื่อรายการ</th>
-                                    <th scope="col">ประเภท</th>
-                                    <th scope="col">จำนวน</th>
-                                    <th scope="col">วันที่สร้าง</th>
-                                    <th scope="col">อัพเดตครั้งสุดท้าย</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Building</th>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Tel.</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                 </tr>
@@ -34,10 +35,9 @@
                                 @foreach($datas as $data)
                                 <tr>
                                     <td class="align-middle overflow-hidden">{{$data->name}}</td>
-                                    <td class="align-middle overflow-hidden">{{$data->type}}</td>
-                                    <td class="align-middle overflow-hidden">{{$data->amount}}</td>
-                                    <td class="align-middle overflow-hidden">{{$data->created_at->toDateString()}}</td>
-                                    <td class="align-middle overflow-hidden">{{$data->updated_at}}</td>
+                                    <td class="align-middle overflow-hidden">{{$data->build}}</td>
+                                    <td class="align-middle overflow-hidden">{{$data->depart}}</td>
+                                    <td class="align-middle overflow-hidden">{{$data->tel}}</td>
                                     <td class="align-middle text-center">
                                         <a href="createData/{{$data->id}}/edit" class="btn btn-warning">Edit</a>
                                     </td>
@@ -53,8 +53,6 @@
                             </tbody>
                         </table>
                     </div>
-
-
 
                 </div>
             </div>

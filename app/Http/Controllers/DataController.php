@@ -19,14 +19,14 @@ class DataController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'amount' => 'required|numeric',
-            'type' => 'required',
+            'tel' => 'required|numeric',
         ]);
 
         $data = new Data;
         $data->name = $request->name;
-        $data->type = $request->type;
-        $data->amount = $request->amount;
+        $data->build = $request->build;
+        $data->depart = $request->depart;
+        $data->tel = $request->tel;
 
         $data->save();
 
@@ -48,17 +48,17 @@ class DataController extends Controller
 
         $request->validate([
             'name' => 'required|max:255',
-            'amount' => 'required|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/',
-            'type' => 'required',
+            'tel' => 'required|numeric',
         ]);
 
         $data->name = $request->name;
-        $data->type = $request->type;
-        $data->amount = $request->amount;
+        $data->build = $request->build;
+        $data->depart = $request->depart;
+        $data->tel = $request->tel;
 
         $data->save();
 
-        $request->session()->flash('status', $request->name. ' is create sucessfully');
+        $request->session()->flash('status', $request->name. ' is update sucessfully');
         return redirect('/home');
     }
 
@@ -69,7 +69,7 @@ class DataController extends Controller
         $dataname = $data->name;
         $data->delete();
 
-        Session()->flash('status',$dataname. " is delete successfully");
+        Session()->flash('status', $dataname. " is delete successfully");
         return redirect('/home');
     }
 }

@@ -13,15 +13,16 @@ class FindController extends Controller
     }
 
     public function show(Request $request){
-        $expiry = explode("-", $request->month);
-        $month = $expiry[1];
-        $year = $expiry[0];
-        //$datas = Data::all();
-        $datas = Data::whereMonth('updated_at', '=' , $month)->get();
-        $income = Data::whereMonth('updated_at', $month)->where('type' , 'รายรับ')->sum('amount');
-        $pay = Data::whereMonth('updated_at', $month)->where('type' , 'รายจ่าย')->sum('amount');
-        $total = $income - $pay;
-        return view('findshow')->with('month', $month)->with('datas', $datas)->with('income' , $income)->with('pay' , $pay)->with('total' , $total);
+
+        $input = $request->input;
+        $datas = Data::query()
+            ->where('name', 'LIKE', "%{$input}%")
+            ->orWhere('build', 'LIKE', "%{$input}%") 
+            ->orWhere('depart', 'LIKE', "%{$input}%") 
+            ->orWhere('tel', 'LIKE', "%{$input}%") 
+            ->get();
+
+        return view('findshow')->with('input', $input)->with('datas', $datas);
     }
 
 }

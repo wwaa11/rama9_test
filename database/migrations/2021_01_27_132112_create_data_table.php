@@ -15,9 +15,10 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
             $table->string('name');
-            $table->decimal('amount');
+            $table->string('build');
+            $table->string('depart');
+            $table->string('tel');
             $table->string('date')->nullable();
             $table->timestamps();
         });

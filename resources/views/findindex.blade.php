@@ -2,19 +2,21 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-12">
-            <form action="/find/show" method="GET">
-                <div class="col-md">
-                    <label>เลือกวันที่</label>
-                    <div class="form-group">
-                        <div class="input-group date"  data-target-input="nearest">
-                            <input type="month" id="month" name="month" />
+            <div class="card">
+                <div class="card-body">
+                    <form action="/find/show" method="GET">
+                        <div class="col-md">
+                            <h3>Search Employees</h3>
+                            <div class="form-group">
+                                <input type="text" name="input">
+                            </div>
+                            <input class="btn btn-primary" type="submit" value="Search">
                         </div>
-                    </div>
-                    <input class="btn btn-primary" type="submit" value="Show Report">
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

@@ -14,11 +14,10 @@ class dataSeeder extends Seeder
         //
         DB::table('data')->insert([
                 [
-                'name' => 'รายรับ'.Str::random(1),
-                'amount' => rand ( 1 , 1000 ),
-                'type' => 'รายรับ',
-                'created_at' => '2021-1-01',
-                'updated_at' => '2021-1-01'
+                'name' => 1,
+                'build' => 1,
+                'depart' => 1,
+                'tel' => 1,
                 ]
         ]);
     }
